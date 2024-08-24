@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include 'bootstrap.html' %}
+    <title>All Blogs</title>
+</head>
+<body>
+   {% include 'header.html' %}
+    <section id="blogs" class="projects-section master-container" style="color: #fff">
+      <h1>All Blogs</h1>
+      <h2 class="projects-section-header">These are Blogs that Helps Your Career Growth</h2>
+      <div class="project-grid">
+        {% for blog in blogs %}
+          <a
+            href="/blog/{{ blog['id'] }}"
+            target="_blank"
+            class="project project-tile"
+          >
+            <img
+              class="project-image"
+              src="{{ blog.image_path }}" alt="{{ blog.title }}"
+              alt="Article image"
+            />
+                <p class="project-title">
+                  <span class="code">&lt;</span>
+                    {{ blog['title'] }}
+                  <span class="code">&#47;&gt;</span>
+                </p>
+              </a>
+              {% endfor %}
+            </div>
+        </section>
+    {% include 'footer.html' %}
+</body>
+</html>

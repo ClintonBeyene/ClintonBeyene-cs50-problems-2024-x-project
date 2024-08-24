@@ -1,0 +1,68 @@
+<section id="jobs" class="jobs-section master-container">
+  <h2>
+      Explore Your Ideal Career Aligned with Your Passions and Abilities:
+  </h2>
+  <h3 class="projects-section-header">
+      Unlock Your Full Potential and Embrace Your Bright Future.
+  </h3>
+  <div>
+    {% set sorted_jobs = jobs|sort(attribute='title', reverse=true) %}
+    {% for job in sorted_jobs %}
+      {% if loop.index <= 3 %}
+        <div class="border-bottom row align-items-start" style="margin-bottom:16px;padding-bottom:8px;">
+          <div class="col-10">
+            {% include 'bootstrap.html' %}
+            <h4>
+              <b>Title:</b>{{ job['title'] }}
+            </h4>
+            <div>
+              <b>Location:</b> {{ job['location'] }}
+            </div>
+            {% if 'salary' in job and job['salary'] is not string %}
+              <div>
+                <b>Salary:</b> {{ job['salary'] }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="col-2">
+            <a href="/job/{{ job['id'] }}" type="button" class="btn btn-outline-primary">Apply</a>
+          </div>
+  </div>
+      {% endif %}
+    {% endfor %}
+    <button id="show-all-jobs" class="btn btn-outline-primary" style="align-items: center;">
+      <a
+      href="/alljobs"
+      target="_blank"
+      >Show all<i class="ri-arrow-right-s-line"></i>
+    </a>
+    </button>
+  </section>
+    <script>
+      const loadMoreButton = document.getElementById('show-all-jobs');
+      const contentContainer = document.getElementById('content');
+      let currentPage = 1;
+    
+      loadMoreButton.addEventListener('click', async () => {
+          // Fetch more items from the server (e.g., via AJAX or API)
+          const response = await fetch(`/alljobs?page=${currentPage}`);
+          const data = await response.json();
+    
+          // Append new items to the content container
+          data.items.forEach(item => {
+              if (typeof item === 'object') {
+                const newItem = document.createElement('div');
+                newItem.classList.add('item');
+                newItem.textContent = JSON.stringify(item);
+                contentContainer.appendChild(newItem);
+              } else {
+                const newItem = document.createElement('div');
+                newItem.classList.add('item');
+                newItem.textContent = item;
+                contentContainer.appendChild(newItem);
+              }
+          });
+    
+          currentPage++; // Increment the page number
+      });
+    </script>

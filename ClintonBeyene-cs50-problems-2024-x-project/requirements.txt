@@ -1,0 +1,6 @@
+flask
+gunicorn
+Flask_session
+pytz
+requests
+mysql.connector

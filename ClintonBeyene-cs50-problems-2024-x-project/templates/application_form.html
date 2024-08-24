@@ -1,0 +1,34 @@
+{% include 'bootstrap.html' %}
+<h4>Application Form</h4>
+<form action="/job/{{ job['id'] }}/apply" method="post">
+<div class="mb-2">
+  <label>Full Name</label><br>
+  <input type="text" placeholder="Full Name" name="full_name">
+</div>
+<div class="mb-2">
+  <label>Email</label><br>
+  <input type="text" placeholder="Gmail adress" name="email">
+</div>
+
+<div class="mb-2">
+  <label>LinkedIn URL</label><br>
+  <input type="text" placeholder="LinkedIn URL" name="linkedin_url">
+</div>
+
+<div class="mb-2">
+  <label>Education</label><br>
+  <textarea placeholder="Education Background" name="education"></textarea>
+</div>
+
+<div class="mb-2">
+  <label>Work Experience</label><br>
+  <textarea placeholder="Work Experience"name="work_experience"></textarea>
+</div>
+
+<div class="mb-2">
+  <label>Resume URL</label><br>
+  <input type="text" name="resume_url" placeholder="Insert Resume URL">
+</div>
+
+<input type="submit" name="submit">
+</form>

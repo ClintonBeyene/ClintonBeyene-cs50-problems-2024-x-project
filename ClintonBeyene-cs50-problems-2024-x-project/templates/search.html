@@ -1,0 +1,30 @@
+{% extends "home.html" %}
+
+{% block main %}
+  <div class="container my-5">
+    {% if jobs %}
+      <h2 class="text-center text-white mb-4">Jobs</h2>
+      <ul class="list-unstyled">
+        {% for job in jobs %}
+          <li class="media bg-dark text-white p-3 mb-3 rounded">
+            <a href="{{ url_for('show_job', id=job['id']) }}" class="text-white">
+              <h5 class="mt-0 mb-1">{{ job['title'] }} - {{ job['company'] }}</h5>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% if blogs %}
+      <h2 class="text-center text-white mb-4">Blogs</h2>
+      <ul class="list-unstyled">
+        {% for blog in blogs %}
+          <li class="media bg-dark text-white p-3 mb-3 rounded">
+            <a href="{{ url_for('show_blogs', id=blog['id']) }}" class="text-white">
+              <h5 class="mt-0 mb-1">{{ blog['title'] }}</h5>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+{% endblock %}

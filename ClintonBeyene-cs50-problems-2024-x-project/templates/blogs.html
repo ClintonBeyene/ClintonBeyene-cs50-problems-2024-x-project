@@ -1,0 +1,51 @@
+<section id="blogs" class="projects-section master-container" style="color: #fff">
+  <h2 class="projects-section-header">These are Blogs that Helps Your Career Growth</h2>
+  <div class="project-grid" id="blogs-container">
+    {% set sorted_blogs = blogs | sort(attribute='location', reverse=true) %}
+    {% set count = 0 %}
+    {% for blog in sorted_blogs %}
+    <a
+      href="/blog/{{ blog['id'] }}"
+      target="_blank"
+      class="project project-tile"
+    >
+      <img
+        class="project-image"
+        src="{{ blog.image_path }}" alt="{{ blog.title }}"
+        alt="Article image"
+      />
+      <p class="projects-section-header">
+        <span class="code-text">
+          {{ blog['title'] }}
+        </span>
+      </p>
+    </a>
+    {% endfor %}
+  </div>
+  <a
+      href="/allblogs"
+      id="show-all-blogs"
+      class="btn btn-show-all"
+      target="_blank"
+      >Show all<i class="ri-arrow-right-s-line"></i>
+    </a>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+          const showMoreButton = document.querySelector("#show-all-blogs");
+          const blogs = document.querySelectorAll("#blogs-container");
+          const hiddenblogs = [];
+          blogs.forEach((blog, index) => {
+              if (index >= 1) {
+                  blog.style.display = "none";
+                  hiddenblogs.push(blog);
+              }
+          });
+          showMoreButton.addEventListener("click", () => {
+            hiddenblogs.forEach(blog => {
+                blog.style.display = "block";
+            });
+            showMoreButton.style.display = "none";
+          });
+      });
+    </script>
+  </section>

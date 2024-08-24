@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include 'bootstrap.html' %}
+        <style>
+            /* Custom CSS for companylogin.html */
+            .container {
+                max-width: 400px;
+                margin: 0 auto;
+                margin-top: 100px;
+                padding: 20px;
+                background-color: var(--construction-blue);
+                border-radius: 5px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            }
+            .form-label {
+                color: var(--portfolio-white);
+            }
+            .form-control {
+                background-color: #fffff0;
+                color: #00000f;
+                border-radius: 5px;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: none;
+            }
+            .btn-primary {
+                background-color: var(--construction-yellow);
+                color: var(--portfolio-white);
+                font-size: 20px;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            .btn-primary:hover {
+                background-color: var(--construction-orange);
+            }
+        </style>
+    </head>
+    <body>
+        {% include 'header2.html' %}
+        <main>
+            <div class="container">
+                <form action="/register" method="post">
+                    <div class="form-group">
+                        <label for="username" class="form-label">Username</label>
+                        <input class="form-control" id="username" name="username" placeholder="Enter your username" type="text">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input class="form-control" id="password" name="password" placeholder="Enter your password" type="password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmpassword" class="form-label">Confirm Password</label>
+                        <input class="form-control" name="confirmation" placeholder="Confirm Password" type="password" id="confirmpassword">
+                    </div>
+                    <button class="btn btn-primary" type="submit">Register</button>
+                </form>
+            </div>
+        </main>
+        {% include 'footer.html' %}
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include 'bootstrap.html' %}
+  </head>
+  <body>
+    <nav class="bg-light border navbar navbar-expand-md navbar-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/">
+          <img src="/static/logo.jpeg" alt="Logo" style="height: 50px; width: 60px" 
+          class="d-inline-block align-text-top"> Construction Jobs </a>
+        <form action="/search" method="get">
+          <input id="construction" autocomplete="off" autofocus type="text" placeholder="Search.." name="search">
+          <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </form>
+        <div class="collapse navbar-collapse" id="navbar">
+          {% if session['user_id'] %}
+            <ul class="navbar-nav me-auto mt-2">
+              <li class="nav-item"><a class="nav-link" href="#jobs">Jobs</a></li>
+              <li class="nav-item"><a class="nav-link" href="#blogs">Blogs</a></li>
+              <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+            <ul class="navbar-nav ms-auto mt-2">
+              <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+          </ul>
+          {% else %}
+            <ul class="navbar-nav ms-auto mt-2">
+              <li class="nav-item"><a class="nav-link" href="/postjob">Post Job</a></li>
+              <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+              <li class="nav-item"><a class="nav-link" href="/login">Log In</a></li>
+            </ul>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+      {% include 'welcome.html' %}
+      {% include 'index.html' %}
+      {% include 'blogs.html' %}
+      {% include 'contacts.html' %}
+    <main class="main-container py-5 text-center">
+        {% block main %}{% endblock %}
+    </main>
+  </body>
+</html>

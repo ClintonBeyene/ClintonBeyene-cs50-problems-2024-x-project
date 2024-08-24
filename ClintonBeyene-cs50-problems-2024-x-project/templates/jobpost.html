@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% include 'bootstrap.html' %}
+    </head>
+    <body>
+        <nav class="bg-light border navbar navbar-expand-md navbar-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="/">
+                <img src="/static/logo.jpeg" alt="Logo" style="height: 50px; width: 60px" 
+                class="d-inline-block align-text-top"> Construction Jobs </a>
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+              <div class="collapse navbar-collapse" id="navbar">
+                {% if session['user_id'] %}
+                  <ul class="navbar-nav me-auto mt-2">
+                    <li class="nav-item"><a class="nav-link" href="#jobpost">Post Job</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                  </ul>
+                  <ul class="navbar-nav ms-auto mt-2">
+                    <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                </ul>
+                {% else %}
+                  <ul class="navbar-nav ms-auto mt-2">
+                    <li class="nav-item"><a class="nav-link" href="/registercompany">Register</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/logincompany">Log In</a></li>
+                  </ul>
+                {% endif %}
+              </div>
+            </div>
+          </nav>
+    </body>
+    <div class="projects-section master-container">
+      {% include 'jobform.html' %}
+    </div>
+    {% include 'footer.html' %}
+</html>

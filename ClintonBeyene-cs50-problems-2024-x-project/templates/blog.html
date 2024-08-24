@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Post</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <header>
+    {% include 'header.html' %}
+  </header>
+  <body>
+    <div class="jobs-section">
+      <div class="row">
+        <div class="col-md-8 offset-md-2">
+          <div class="border-bottom row align-items-start container" style="margin-bottom:16px;padding-bottom:8px;">
+            <div>
+              <div class='mb-2' style="color: #fff; margin-bottom: 4px;">
+                <h3 class="mb-2" style="margin-bottom: 4px; align-items: center; color: #fffff0">
+                  <b>Title:</b>{{ blog['title'] }}
+                </h3>
+                <b>Article:</b>
+            {% for line in blog['article'].splitlines() %}
+                <p style="color: #fff">{{ line }}</p>
+            {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% include 'footer.html' %} 
+  </body>
+</html>
